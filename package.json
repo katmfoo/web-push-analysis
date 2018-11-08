@@ -1,0 +1,23 @@
+{
+  "name": "web-push-analysis",
+  "version": "1.0.0",
+  "description": "Experiment for analyzing performance of different web push technologies using socket.io",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pricheal/web-push-analysis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pricheal/web-push-analysis/issues"
+  },
+  "homepage": "https://github.com/pricheal/web-push-analysis#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.1.1"
+  }
+}
