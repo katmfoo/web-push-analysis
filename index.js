@@ -10,11 +10,11 @@ app.get('/', function(req, res) {
 app.use('/node_modules', express.static(__dirname + '/node_modules/'));
 
 io.on('connection', function(socket) {
-  console.log('a user connected');
 
-  socket.on('disconnect', function() {
-    console.log('user disconnected');
+  socket.on('request', () => {
+    socket.emit('response');
   });
+
 });
 
 http.listen(3000, function() {

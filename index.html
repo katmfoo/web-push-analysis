@@ -5,10 +5,46 @@
   </head>
   <body>
     <p>This is the body of the page</p>
+    <button onClick="pushToServer()">Push to server</button>
 
     <script src="/node_modules/socket.io-client/dist/socket.io.js"></script>
     <script>
-      var socket = io();
+      var socket = io({
+        transports: ['polling'] //polling or websocket
+      });
+
+      const num_requests = 10000;
+
+      let total_elapsed_times = 0.0;
+
+      let start_time = null;
+      let end_time = null;
+
+      let index = 0;
+
+      socket.on('response', () => {
+        end_time = window.performance.now();
+
+        // Add the elapsed time
+        let elapsed_time = end_time - start_time;
+        total_elapsed_times += parseFloat(elapsed_time);
+
+        // If index is less than num_requests, emit another request
+        if (index < num_requests - 1) {
+          index++;
+          pushToServer();
+        } else {
+          // Requests are complete, calculate average elapsed time and print results
+          let average = total_elapsed_times / num_requests;
+          console.log(average);
+        }
+      });
+
+      function pushToServer() {
+        console.log('Sending request ' + (index + 1));
+        start_time = window.performance.now();
+        socket.emit('request');
+      }
     </script>
   </body>
 </html>
