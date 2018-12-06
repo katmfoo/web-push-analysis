@@ -4,14 +4,14 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/client.html');
 });
 
 app.use('/node_modules', express.static(__dirname + '/node_modules/'));
 
 io.on('connection', function(socket) {
 
-  socket.on('request', () => {
+  socket.on('request', function() {
     socket.emit('response');
   });
 

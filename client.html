@@ -7,12 +7,13 @@
     <button onClick="pushToServer()">Push to server</button>
 
     <script src="/node_modules/socket.io-client/dist/socket.io.js"></script>
+    
     <script>
       var socket = io({
-        transports: ['websockets'] // 'polling' or 'websocket'
+        transports: ['websocket'] // 'polling' or 'websocket'
       });
 
-      const num_requests = 10000;
+      const num_requests = 1000;
 
       let total_elapsed_times = 0.0;
 
@@ -21,7 +22,7 @@
 
       let index = 0;
 
-      socket.on('response', () => {
+      socket.on('response', function() {
         end_time = window.performance.now();
 
         // Add the elapsed time

@@ -2,9 +2,9 @@
   "name": "web-push-analysis",
   "version": "1.0.0",
   "description": "Experiment for analyzing performance of different web push technologies using socket.io",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
