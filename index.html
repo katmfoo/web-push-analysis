@@ -4,13 +4,12 @@
     <title>Web Push Analysis</title>
   </head>
   <body>
-    <p>This is the body of the page</p>
     <button onClick="pushToServer()">Push to server</button>
 
     <script src="/node_modules/socket.io-client/dist/socket.io.js"></script>
     <script>
       var socket = io({
-        transports: ['polling'] //polling or websocket
+        transports: ['websockets'] // 'polling' or 'websocket'
       });
 
       const num_requests = 10000;
@@ -36,7 +35,7 @@
         } else {
           // Requests are complete, calculate average elapsed time and print results
           let average = total_elapsed_times / num_requests;
-          console.log(average);
+          console.log(average.toFixed(3));
         }
       });
 
